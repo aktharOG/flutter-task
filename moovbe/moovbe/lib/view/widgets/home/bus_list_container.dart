@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:moovbe/constants/common/colors.dart';
+import 'package:moovbe/view/screens/bus-screen/bus_details_sreen.dart';
 
 class BuslistContainer extends StatelessWidget {
-  const BuslistContainer({super.key});
+ final String busName,model;
+  const BuslistContainer({super.key,required this.busName,required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +18,7 @@ class BuslistContainer extends StatelessWidget {
         height: 74,
         width: 335,
         decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12),
           color: buslistBackground,
           borderRadius: BorderRadius.circular(15),
     
@@ -34,8 +38,8 @@ class BuslistContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          Text("KSRTC"),
-          Text("Swift Scanio P-series"),
+          Text(busName),
+          Text(model),
          ],),),
             ],),
           ),
@@ -44,7 +48,9 @@ class BuslistContainer extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: backgroundColor
             ),
-            onPressed: (){}, child: Text("Manage"))
+            onPressed: (){
+              Get.to(BusDetailsPage(busName: busName ,model: model,));
+            }, child: Text("Manage"))
           
     
         ],),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:moovbe/view/screens/driver-screen/display_divers_list.dart';
 import 'package:moovbe/view/widgets/home/bus_list_container.dart';
 import 'package:moovbe/view/widgets/home/container_with_image.dart';
 import 'package:moovbe/view/widgets/home/driver_conatiner.dart';
@@ -34,9 +36,13 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        Row(children:const [
-                    ContainerImage(image: "assets/image 2.png",name: "Bus",content: "Manage your Bus",),
-                    DriverContainer(name: "Driver", content: "Manage your Driver", image: "assets/driver.png")
+        Row(children: [
+                  const  ContainerImage(image: "assets/image 2.png",name: "Bus",content: "Manage your Bus",),
+                    InkWell(
+                      onTap: (){
+                        Get.to(DisplayDriversList());
+                      },
+                      child: const DriverContainer(name: "Driver", content: "Manage your Driver", image: "assets/driver.png"))
         ],),
         const Padding(
           padding: EdgeInsets.all(10.0),
@@ -48,7 +54,7 @@ class HomePage extends StatelessWidget {
           physics: const ScrollPhysics(),
           itemCount: 5,
           itemBuilder: (ctx,index){
-            return const BuslistContainer();
+            return const BuslistContainer(busName: "KSRTC",model: "Swift Scanio P-series",);
           })
       ],),)
     );
