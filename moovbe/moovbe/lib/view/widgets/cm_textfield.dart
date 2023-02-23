@@ -16,7 +16,8 @@ class CMTextField extends StatelessWidget {
                 color: const Color.fromRGBO(0x0000002a, 42, 42, 0.1),
                 borderRadius: BorderRadius.circular(10)
               ),
-               child: TextFormField(  
+               child: TextFormField(
+                showCursor: false,  
                 obscureText: obscureText ,
                 controller: controller,
                 textAlign: TextAlign.center,

@@ -1,12 +1,20 @@
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:moovbe/controller/login_controller.dart';
+import 'package:moovbe/view/screens/home-screen/home_screen.dart';
 import 'package:moovbe/view/widgets/cm_textfield.dart';
 import 'package:moovbe/common/colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-
+     
   @override
   Widget build(BuildContext context) {
+       final controller = Get.put(LoginController());
+
        TextEditingController usernamecontroller = TextEditingController();
        TextEditingController passwordcontroller = TextEditingController();
 
@@ -42,9 +50,9 @@ class LoginPage extends StatelessWidget {
            const SizedBox(height: 30,),
 
             Form(child: Column(children:   [
-            CMTextField(hintText: "Enter Username", labelText: "Username", controller: usernamecontroller),
+            CMTextField(hintText: "", labelText: "Username", controller: usernamecontroller),
             const SizedBox(height: 20,),
-            CMTextField(hintText: "Enter Password", labelText: "Password", controller: passwordcontroller)
+            CMTextField(hintText: "", labelText: "Password", controller: passwordcontroller,obscureText: true,)
 
            ],)),
 
@@ -59,21 +67,42 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(30.0),
         child: BottomAppBar(
           color: Colors.transparent,
-          child: ConstrainedBox(
-              constraints: const BoxConstraints.tightFor(height: 58,width: 316),
-              child: ElevatedButton(
-                  
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+          child:  ConstrainedBox(
+                constraints: const BoxConstraints.tightFor(height: 58,width: 316),
+                child: ElevatedButton(
                     
-                    backgroundColor: const Color.fromRGBO(252, 21, 59, 1)
-                  ),
-                  onPressed: (){
-                   
-                  }, child: const Text("Login",style: TextStyle(color:textColorWhite) ,)),
-            ), ),
-      ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                      
+                      backgroundColor: const Color.fromRGBO(252, 21, 59, 1)
+                    ),
+                    onPressed: ()async{
+                       log(usernamecontroller.text);
+                       log(passwordcontroller.text);
+                     await  controller.login(username: usernamecontroller.text, password: passwordcontroller.text);
+                       if(controller.user!["status"]==false){
+                        if(controller.user!["message"]==null){
+                          // ignore: use_build_context_synchronously
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Fill Required Fields")));
+                        }else{
+                        // ignore: use_build_context_synchronously
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Failed : ${controller.user!["message"]}")));
+                        }
+                       }
+                       
+                       else{
+                        controller.button=true;
+                        log(controller.button.toString());
+                       // ignore: use_build_context_synchronously
+                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Success : ${controller.user!["message"]}")));
+                       Get.to(const HomePage());
+                       }
+                    }, child: const Text("Login",style: TextStyle(color:textColorWhite) ,)),
+              ),
+          ),
+           ),
+      
     );
   }
 }
