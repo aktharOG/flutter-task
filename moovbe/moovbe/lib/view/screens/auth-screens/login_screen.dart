@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moovbe/common/cm_textfield.dart';
+import 'package:moovbe/view/widgets/cm_textfield.dart';
 import 'package:moovbe/common/colors.dart';
 
 class LoginPage extends StatelessWidget {
