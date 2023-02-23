@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:moovbe/controller/login_controller.dart';
 import 'package:moovbe/view/screens/home-screen/home_screen.dart';
 import 'package:moovbe/view/widgets/cm_textfield.dart';
-import 'package:moovbe/common/colors.dart';
+import 'package:moovbe/constants/common/colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

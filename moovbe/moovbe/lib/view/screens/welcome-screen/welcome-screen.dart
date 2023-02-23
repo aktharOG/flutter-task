@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moovbe/common/colors.dart';
+import 'package:moovbe/constants/common/colors.dart';
 import 'package:moovbe/view/screens/auth-screens/login_screen.dart';
 
 class WelcomePage extends StatelessWidget {
