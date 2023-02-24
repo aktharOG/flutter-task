@@ -22,12 +22,7 @@ class DisplayDriversList extends StatelessWidget {
             child: 
             AppBar(
               centerTitle: true,
-              title: Column(
-                children: const [
-                  SizedBox(height: 30,),
-                  Text("Driver List"),
-                ],
-              )
+              title: const Text("Driver List")
             ),
           ),
           body:controller.data==null?const Center(child: CircularProgressIndicator(),): SingleChildScrollView(child: Column(

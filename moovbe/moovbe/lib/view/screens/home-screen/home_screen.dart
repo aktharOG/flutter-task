@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:moovbe/constants/sample_data.dart';
 import 'package:moovbe/view/screens/driver-screen/display_divers_list.dart';
 import 'package:moovbe/view/widgets/home/bus_list_container.dart';
-import 'package:moovbe/view/widgets/home/container_with_image.dart';
+import 'package:moovbe/view/widgets/home/bus_container.dart';
 import 'package:moovbe/view/widgets/home/driver_conatiner.dart';
 
 class HomePage extends StatelessWidget {

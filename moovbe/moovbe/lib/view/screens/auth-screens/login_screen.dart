@@ -100,11 +100,9 @@ class LoginPage extends StatelessWidget {
                   password: passwordcontroller.text);
               if (controller.user!["status"] == false) {
                 if (controller.user!["message"] == null) {
-                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Fill Required Fields")));
                 } else {
-                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           "Login Failed : ${controller.user!["message"]}")));

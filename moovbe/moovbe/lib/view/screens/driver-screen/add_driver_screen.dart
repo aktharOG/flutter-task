@@ -20,12 +20,7 @@ class AddDriver extends StatelessWidget {
         child: 
         AppBar(
           centerTitle: true,
-          title: Column(
-            children: const [
-              SizedBox(height: 30,),
-              Text("Add Driver"),
-            ],
-          )
+          title: const Text("Add Driver")
         ),
       ),
       body: SingleChildScrollView(child: Column(

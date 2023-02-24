@@ -21,6 +21,7 @@ class DriverContainer extends StatelessWidget {
         height: 176,
         width: 158,
         decoration: BoxDecoration(
+        
             borderRadius: BorderRadius.circular(15), color: primaryColor),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -43,8 +44,8 @@ class DriverContainer extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image.asset(
                   image,
-                  height: 117,
-                  width: 150,
+                 height: MediaQuery.of(context).size.height/3.5/1.99,
+                 width: MediaQuery.of(context).size.width/3,
                 ))
           ],
         ),

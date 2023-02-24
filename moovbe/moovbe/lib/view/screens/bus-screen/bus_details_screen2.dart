@@ -18,12 +18,7 @@ class BusDetailslayout2 extends StatelessWidget {
         child: 
         AppBar(
           centerTitle: true,
-          title: Column(
-            children: [
-              SizedBox(height: 30,),
-              Text("$busName $model"),
-            ],
-          )
+          title: Text("$busName $model")
         ),
       ),
       body: SingleChildScrollView(child: Column(
