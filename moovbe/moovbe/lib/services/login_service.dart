@@ -3,8 +3,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/gestures.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
+import '../controller/login_controller.dart';
 import 'exception-handle/dio_exceptions.dart';
+import 'package:get/get.dart' as g;
 
 class LoginService{
 final Dio dio = Dio(
@@ -32,18 +36,14 @@ final Dio dio = Dio(
          
       var res = jsonEncode(response.data);
       Map<String,dynamic> data = jsonDecode(res);
-      
+         
         if(data["status"]==false){
           return data;
         }else{
            return data;
         }
        
-        
-     // Map<String,dynamic> data = jsonDecode(response.data);
-      // log(data["name"].toString());
-    //  return data;
-    //  log(response.data.toString());
+    
       
     }
       }on DioError catch(err){
@@ -54,5 +54,6 @@ final Dio dio = Dio(
         log("Login Error:$e");
       }return res;
    }    
-
+                          // refresh token
+  
 }

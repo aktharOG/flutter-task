@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:moovbe/services/refresh_token_service.dart';
 import 'package:moovbe/view/screens/welcome-screen/welcome-screen.dart';
 
 import 'constants/common/colors.dart';
+final apiProvider = Provider((ref) => Api());
 
-void main() {
+void main() async{
   runApp(const MyApp());
 }
 

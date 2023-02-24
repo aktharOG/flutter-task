@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moovbe/constants/sample_data.dart';
 import 'package:moovbe/view/screens/driver-screen/display_divers_list.dart';
 import 'package:moovbe/view/widgets/home/bus_list_container.dart';
 import 'package:moovbe/view/widgets/home/container_with_image.dart';
@@ -15,10 +16,11 @@ class HomePage extends StatelessWidget {
         preferredSize:const Size.fromHeight(90),
         child: 
         AppBar(
+          leading: const Text(""),
           centerTitle: true,
           title: Column(
             children: [
-              SizedBox(height: 31,),
+              const SizedBox(height: 31,),
               Stack(
         
               children: [
@@ -44,17 +46,18 @@ class HomePage extends StatelessWidget {
                       },
                       child: const DriverContainer(name: "Driver", content: "Manage your Driver", image: "assets/driver.png"))
         ],),
-        const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Text("21 Buses Found"),       
+         Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text("${busList.length} Buses Found"),       
         ),
         const SizedBox(height: 20,),
         ListView.builder(
           shrinkWrap: true,
           physics: const ScrollPhysics(),
-          itemCount: 5,
+          itemCount: busList.length,
           itemBuilder: (ctx,index){
-            return const BuslistContainer(busName: "KSRTC",model: "Swift Scanio P-series",);
+            final data = busList[index];
+            return  BuslistContainer(busName:data["name"],model: data["model"],type: data["type"],);
           })
       ],),)
     );

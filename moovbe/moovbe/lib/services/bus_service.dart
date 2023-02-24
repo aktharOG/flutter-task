@@ -19,7 +19,31 @@ class BusService {
       receiveTimeout: const Duration(seconds: 5000),
     ),
   );
-    
+                                // FETCH LIST OF BUS
+                                 Future fetchBusList() async {
+   final controller =  g.Get.put(LoginController());
+   final urlid = controller.user!["url_id"];
+   final token = controller.user!["access"];
+
+   try{
+    Response response =await dio.get("/BusListApi/$urlid/",
+        options: Options(
+            headers: {"Content-type": "application/json; charset=UTF-8", 'Authorization': 'Bearer $token',}));
+
+            if(response.statusCode==200){
+              log("success");
+              var res = jsonEncode(response.data);
+              Map<String,dynamic> data = jsonDecode(res);
+              return data;
+            }
+   }on DioError catch(err){
+     final errorMessage = DioException.fromDioError(err).toString();
+              log("Dio Error : $errorMessage");
+   }catch(e){
+    log("fetch Bus list  error: $e");
+   }
+  }
+
    
      /// DISPLAY LIST OF DRIVERS
   Future fetchDrivers() async {
@@ -42,7 +66,7 @@ class BusService {
      final errorMessage = DioException.fromDioError(err).toString();
               log("Dio Error : $errorMessage");
    }catch(e){
-    log("fetch Driver list  error: ${e}");
+    log("fetch Driver list  error: $e");
    }
   }
 
